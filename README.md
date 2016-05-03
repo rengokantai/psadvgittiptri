@@ -106,3 +106,36 @@ git blame filename
 git blame filename -L14:16
 git-shortlog -s -n |head -10
 ```
+#####Branching and Merging
+show all branch's head
+```
+git show-ref --heads
+```
+when delete a branch, we just delete the ref, make the commits dangling.
+```
+git branch -D b
+```
+check all dangling commits
+```
+git fsck --dangling --no-progress //dangling ref
+git fsck --unreachable --no-progress//dangling commits
+git branch deletedbranch 12345
+```
+######Cherry-picking
+cherry pick from b branch to master
+```
+git cherry-pick $(git merge-base master b)..b
+```
+######Resolving Conflicts
+```
+git merge --abort
+```
+#####Rewriting History
+######Editing Commits
+```
+git rebase -i --root --autosquash
+```
+undo
+```
+git config --blobal alias undo '!f(){git reset --hard $(git rev-parse --abbrev-ref HEAD)@{@{1-1}};}; f'
+```
