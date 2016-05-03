@@ -77,3 +77,32 @@ git log --ancestry-path a..b  //show all commit not only ancestor of b, but desc
 ```
 git show-branch a b c
 ```
+######Tracking Commits
+show merged branch
+```
+git branch --merged (name)
+```
+not merged branch
+```
+git branch --no-merged (name)
+```
+
+show topic
+```
+git show-branch --topic master a b   //show all commits in branch a and b but not in master
+```
+######
+search which commit contains specific string change(only c and c++)
+```
+git log -L:funcname:filename
+```
+set .gitattributes
+```
+*.java diff=java
+```
+######Tracking Authors
+```
+git blame filename
+git blame filename -L14:16
+git-shortlog -s -n |head -10
+```
